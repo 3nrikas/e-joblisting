@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>e-joblisting</title>
+</head>
+<body x-data="main()" x-show="display">
+    <div class="gradient"></div>
+    <div class="wrapper">
+
+        <div class="title">
+            <span class="label" x-text="label"></span>
+            <span class="desc" x-text="desc"></span>
+        </div>
+
+        <div class="jobs">
+            <template x-for="job, key in jobs" :key="key">
+                <div @click="select(job)" class="box">
+                    <span style="font-weight: 600;" x-text="job.label"></span>
+                    <span class="salary">Salary: <span x-text="job.salary">100</span>€</span>
+                    <span style="display: block; text-align: left;" x-text="job.desc"></span>
+                </div>
+            </template>
+        </div>
+        
+        <div class="buttons">
+            <template x-if="btns">
+                <button @click="employ()" class="get" x-text="getjob"></button>
+            </template>
+            <button @click="leave()" class="leave" x-text="leavejob"></button>
+            <button @click="exit()" x-text="close"></button>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
